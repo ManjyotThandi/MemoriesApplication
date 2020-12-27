@@ -1,2 +1,2 @@
 # MovieApplication
-MERN application for searching your favorite movies!
+MERN application for uploading your favorite memories!
