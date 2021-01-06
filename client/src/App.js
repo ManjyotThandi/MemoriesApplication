@@ -1,4 +1,8 @@
+import React, { useEffect } from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { getPosts } from './actions/posts';
+
 import memories from './images/memories.png';
 import Form from './components/Form/Form';
 import Posts from './components/Posts/Posts';
@@ -7,6 +11,12 @@ import useStyles from './styles';
 function App() {
 
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // here we can dispatch actions to set our global state
+    dispatch(getPosts());
+  }, [dispatch])
 
   return (
     <Container maxidth="lg">
