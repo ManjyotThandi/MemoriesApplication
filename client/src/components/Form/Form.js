@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
-import { createPost } from '../../actions/posts';
+import { createPost, updatePost } from '../../actions/posts';
+import { useSelector } from 'react-redux';
 
 import useStyles from './styles';
 
 
-const Form = () => {
+const Form = (props) => {
 
     const [postData, setPostData] = useState({
         creator: '',
@@ -17,6 +18,15 @@ const Form = () => {
         selectedFile: ''
     });
 
+    // Dont fetch all posts only fetch updated posts. FInd method for array will return first element that matches the condition
+    const post = useSelector((state) => props.currentId ? state.posts[0].find((p) => p._id === props.currentId) : null);
+    console.log(post)
+    useEffect(() => {
+        if(post) {
+            setPostData(post);
+        }
+    }, [post])
+
     const classes = useStyles();
 
     // This allows us to dispatch actions, just like we did in app.js on loadup.
@@ -25,8 +35,14 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // send the post object as the complete state
-        dispatch(createPost(postData));
+        // if we have a current id, which is set by clicking the three dots. (State is set in app.js. We could put it in redux if we desire)
+        if (props.currentId) {
+            dispatch(updatePost(props.currentId, postData))
+        }
+        else {
+            // send the post object as the complete state
+            dispatch(createPost(postData));
+        }
     }
 
     const clear = () => {

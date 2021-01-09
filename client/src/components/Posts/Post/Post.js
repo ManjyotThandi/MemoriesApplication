@@ -16,7 +16,9 @@ const Post = (props) => {
                 <Typography variant="body2">{moment(props.post.createdAt).fromNow}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{ color: 'white' }} size="small" onClick={() => { }}>
+                <Button style={{ color: 'white' }}
+                    size="small"
+                    onClick={() => { props.setCurrentId(props.post._id) }}>
                     <MoreHorizIcon fontSize="default" />
                 </Button>
             </div>
