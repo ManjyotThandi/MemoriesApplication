@@ -8,14 +8,15 @@ import postRoutes from './routes.js/posts';
 
 const app = express();
 
-// use express middleware to use Router
-app.use("/posts", postRoutes);
 
 dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+// use express middleware to use Router
+app.use("/posts", postRoutes);
 
 // MONGO db atlas connection
 const CONNECTION_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.gaer5.mongodb.net/<dbname>?retryWrites=true&w=majority`

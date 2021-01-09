@@ -1,0 +1,12 @@
+redux work flow
+
+from index.js create store with all reducers
+from inside of app.js useeffect call dispatch(action) for posts
+action calls on reducer
+
+now to access this global state inside our components use useSelector in respective component
+
+also redux thunk is used inside of action to use async await
+
+
+// JUST GOT actions to work and console log it
