@@ -8,7 +8,6 @@ import moment from 'moment';
 
 const Post = (props) => {
     const classes = useStyles();
-    console.log(props);
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={props.post.selectedFile} title={props.post.title} />

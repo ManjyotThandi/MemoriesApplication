@@ -13,7 +13,6 @@ const Posts = () => {
         // state.posts is the value we gave in combine reducers in the /reducers/index.js. we want that state
         return state.posts
     });
-
     const classes = useStyles();
     
     return (
