@@ -25,8 +25,9 @@ const Post = (props) => {
             <div className={classes.details}>
                 {/* <Typography className={classes.title} variant="body2" color="textSecondary">{props.post[0].tags.map((tag) => `#${tag} `)}</Typography> */}
             </div>
+            <Typography className={classes.title} variant="h5" gutterBottom>{props.post.title}</Typography>
             <CardContent>
-                <Typography className={classes.title} variant="h5" gutterBottom>{props.post.message}</Typography>
+                <Typography variant="h5" gutterBottom>{props.post.message}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" onClick={() => { }}>

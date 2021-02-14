@@ -22,7 +22,7 @@ const Form = (props) => {
     const post = useSelector((state) => props.currentId ? state.posts[0].find((p) => p._id === props.currentId) : null);
     console.log(post)
     useEffect(() => {
-        if(post) {
+        if (post) {
             setPostData(post);
         }
     }, [post])
@@ -43,15 +43,23 @@ const Form = (props) => {
             // send the post object as the complete state
             dispatch(createPost(postData));
         }
+        clear();
     }
 
     const clear = () => {
-
+        props.setCurrentId(null);
+        setPostData({
+            creator: '',
+            title: '',
+            message: '',
+            tags: '',
+            selectedFile: ''
+        });
     }
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.form} ${classes.root}`} onSubmit={handleSubmit}>
-                <Typography variant="h6"> Creating a Memory</Typography>
+                <Typography variant="h6"> {props.currentId ? 'Updating a memory' : 'Creating a memory'}</Typography>
 
                 <TextField name="creator"
                     variant="outlined"

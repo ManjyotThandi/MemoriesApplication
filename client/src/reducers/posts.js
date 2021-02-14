@@ -4,7 +4,7 @@ export default (posts = [], action) => {
 
     //rather than have multiple if statements, use switch statement
     switch (action.type) {
-        case 'FETCH_ALL':
+        case 'FETCH_ALL': 
             return action.payload;
 
         // for CREATE we already have an array of posts (which is the global state), we need to spread it and add the new post
@@ -15,7 +15,7 @@ export default (posts = [], action) => {
             // since map returns an array we can loop over entire posts array, check if returned payload has same id (which means we updated it)
             // and then replace that one post with the updated one
             return posts.map((post) => (
-                post._id === action.payload._id ? action.paylod : post
+                post._id === action.payload._id ? action.payload : post
             ));
 
         default:
